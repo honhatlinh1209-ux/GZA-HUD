@@ -45,7 +45,7 @@ function renderPublic(){
   const cats=["Tất cả",...new Set(SITES.map(s=>s.cat))];
   $("#filters").innerHTML=cats.map(c=>`<button class="chip" data-cat="${c}" aria-pressed="${state.cat===c}">${c}</button>`).join("");
   $("#filters").querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{state.cat=b.dataset.cat;renderPublic()});
-  $("#stats").innerHTML=`<div><b>${SITES.length}</b><span>sản phẩm đang chạy</span></div><div><b>${new Set(SITES.map(s=>s.cat)).size}</b><span>nhóm dịch vụ</span></div><div><b>24/7</b><span>luôn sẵn sàng</span></div>`;
+  $("#stats").innerHTML=`<div><b>${SITES.length}</b><span>nhánh đang chạy</span></div><div><b>${new Set(SITES.map(s=>s.cat)).size}</b><span>nhóm dịch vụ</span></div><div><b>24/7</b><span>luôn sẵn sàng</span></div>`;
   const qq=$("#q").value.trim().toLowerCase();
   const list=SITES.filter(s=>(state.cat==="Tất cả"||s.cat===state.cat)&&(!qq||(s.name+" "+s.desc).toLowerCase().includes(qq)));
   $("#grid").innerHTML=list.length?list.map(s=>`

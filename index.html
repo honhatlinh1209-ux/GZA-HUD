@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Cổng Hub Gza</title>
 <meta name="description" content="GZA là gốc, mỗi sản phẩm là một nhánh: tất cả ở một chỗ.">
-<meta name="theme-color" content="#0b0908">
+<meta name="theme-color" content="#f5ecd9">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/css/style.css">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script src="config.js"></script>
@@ -43,19 +43,24 @@
 <section id="public" hidden>
   <div class="ambient" aria-hidden="true"></div>
   <nav class="pub-nav"><div class="wrap">
-    <div class="brand"><span class="mark">G</span><div><div class="nm">Gza</div><div class="sl">Một gốc, nhiều nhánh</div></div></div>
+    <div class="brand"><span class="mark">G</span><div><div class="nm">GZA</div><div class="sl">Một gốc, nhiều nhánh</div></div></div>
     <label class="search"><svg class="i"><use href="#i-search"/></svg>
       <input id="q" class="input" type="search" placeholder="Tìm web…" aria-label="Tìm web"><kbd>/</kbd></label>
     <a class="btn login-btn" href="#admin"><svg class="i" style="width:16px;height:16px"><use href="#i-lock"/></svg>Đăng nhập</a>
   </div></nav>
   <header class="wrap hero">
-    <span class="eyebrow">Cổng chính Gza</span>
-    <h1>Một cánh cửa, <em>cả hệ sinh thái.</em></h1>
-    <p>Mọi sản phẩm của Gza gom về một chỗ. Chọn một web bên dưới, nó sẽ mở ngay trong tab mới.</p>
-    <div class="stats" id="stats"></div>
+    <div class="hero-panel">
+      <span class="eyebrow">Chapter 01 · Hệ sinh thái GZA</span>
+      <h1>Một gốc, <em>vạn nhánh!</em></h1>
+      <p>GZA là gốc rễ. Mỗi web là một nhánh mọc ra từ đó. Chọn một nhánh bên dưới là vào ngay.</p>
+    </div>
+    <div class="hero-side">
+      <div class="bubble">Hôm nay vào nhánh nào đây?</div>
+      <div class="stats" id="stats"></div>
+    </div>
   </header>
   <main class="wrap">
-    <div class="sec-head"><h2>Tất cả sản phẩm</h2><div class="filters" id="filters"></div></div>
+    <div class="sec-head"><h2>Các nhánh của GZA</h2><div class="filters" id="filters"></div></div>
     <div class="grid" id="grid"></div>
   </main>
   <footer class="pub-foot"><div class="wrap">
