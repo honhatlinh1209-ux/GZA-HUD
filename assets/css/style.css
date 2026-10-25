@@ -3,7 +3,7 @@ html,body{margin:0}
 img{max-width:100%}
 :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 
-/* Layout: one dark world (Xưởng Truyện brand). Public = glow hero + large thumbnail cards + quiet footer with hidden lock.
+/* Layout: one dark world (GZA root brand). Public = glow hero + large thumbnail cards + quiet footer with hidden lock.
    #admin = glass login, then sidebar + one-task main area. Deliberately single-theme dark. */
 :root{
   color-scheme:dark;

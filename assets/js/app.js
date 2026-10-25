@@ -129,7 +129,7 @@ const slug=t=>t.normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/đ/gi,"
 /* ---------- ADMIN ---------- */
 function renderSide(){
   $("#side").innerHTML=`
-    <div class="brand"><span class="mark">G</span><div><div class="nm">Gza Admin</div><div class="sl">Xưởng Truyện</div></div></div>
+    <div class="brand"><span class="mark">G</span><div><div class="nm">GZA Admin</div><div class="sl">Quản trị hệ sinh thái</div></div></div>
     <div class="label">Chung</div>
     <button class="nav-item" data-page="overview" aria-current="${state.page==="overview"}"><span class="ico">${ic("home","width:16px;height:16px")}</span><span class="name">Tổng quan</span>${openAlerts()?`<span class="badge">${openAlerts()}</span>`:""}</button>
     <button class="nav-item" data-page="customers" aria-current="${state.page==="customers"}"><span class="ico">${ic("user","width:16px;height:16px")}</span><span class="name">Khách hàng</span></button>
