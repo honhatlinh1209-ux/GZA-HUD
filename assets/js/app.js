@@ -41,19 +41,29 @@ const platPill=p=>`<span class="pill">${p==="Vercel"?"▲":"◆"} ${p}</span>`;
 let authed=false;if(!LIVE){try{authed=sessionStorage.getItem("gza_auth")==="1"}catch(e){}}
 
 /* ---------- PUBLIC ---------- */
+// Ảnh chụp màn hình tự động của từng web; lỗi thì giữ nền gradient + icon
+function shotUrl(u){try{const x=new URL(/^https?:/i.test(u)?u:"https://"+u);return "https://image.thum.io/get/width/720/crop/900/noanimate/"+x.href}catch(e){return ""}}
+function siteIcon(s){const t=(s.name+" "+s.url+" "+s.cat).toLowerCase();
+  if(/truy[eệ]n|comic|manga|story/.test(t))return "book";
+  if(/video|vid|phim|film|stream/.test(t))return "play";
+  if(/company|c[oô]ng ty|doanh nghi/.test(t))return "building";
+  return "spark"}
 function renderPublic(){
   const cats=["Tất cả",...new Set(SITES.map(s=>s.cat))];
   $("#filters").innerHTML=cats.map(c=>`<button class="chip" data-cat="${c}" aria-pressed="${state.cat===c}">${c}</button>`).join("");
   $("#filters").querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{state.cat=b.dataset.cat;renderPublic()});
-  $("#stats").innerHTML=`<div><b>${SITES.length}</b><span>nhánh đang chạy</span></div><div><b>${new Set(SITES.map(s=>s.cat)).size}</b><span>nhóm dịch vụ</span></div><div><b>24/7</b><span>luôn sẵn sàng</span></div>`;
+  const nCat=new Set(SITES.map(s=>s.cat)).size;
+  $("#stats").innerHTML=`<span><b>${SITES.length}</b> nhánh đang chạy</span><i>·</i><span><b>${nCat}</b> nhóm dịch vụ</span><i>·</i><span><b>24/7</b> sẵn sàng</span>`;
   const qq=$("#q").value.trim().toLowerCase();
   const list=SITES.filter(s=>(state.cat==="Tất cả"||s.cat===state.cat)&&(!qq||(s.name+" "+s.desc).toLowerCase().includes(qq)));
   $("#grid").innerHTML=list.length?list.map(s=>`
     <a class="card" href="${s.url}" target="_blank" rel="noopener">
-      <div class="thumb"><div class="bgx" style="background:${grad(s)}"></div><div class="pat"></div><div class="shade"></div>
-        <span class="plat">${s.cat}</span><span class="logo">${ini(s.name)}</span></div>
-      <div class="cbody"><h3>${esc(s.name)}</h3><div class="host mono">${host(s.url)}</div><p>${esc(s.desc)}</p>
-        <div class="go"><span>Truy cập</span><span class="arr">${ic("arrow","width:16px;height:16px")}</span></div></div>
+      <div class="thumb"><div class="bgx" style="background:${grad(s)}"></div><div class="pat"></div>
+        <span class="glyph">${ic(siteIcon(s),"width:56px;height:56px")}</span>
+        <img class="shot" alt="" loading="lazy" src="${shotUrl(s.url)}" onload="this.classList.add('ok')" onerror="this.remove()">
+        <div class="shade"></div><span class="plat">${esc(s.cat)}</span></div>
+      <div class="cbody"><h3>${esc(s.name)}</h3><p>${esc(s.desc)}</p>
+        <div class="go"><span class="host mono">${host(s.url)}</span><span class="visit">Truy cập ${ic("arrow","width:14px;height:14px")}</span></div></div>
     </a>`).join(""):`<div class="empty">${SITES.length?`Không tìm thấy web nào khớp “${esc(qq)}”.`:"Chưa có web nào. Thêm web đầu tiên trong trang quản trị."}</div>`;
   $("#grid").querySelectorAll(".card").forEach(c=>c.addEventListener("pointermove",e=>{const r=c.getBoundingClientRect();c.style.setProperty("--mx",(e.clientX-r.left)+"px");c.style.setProperty("--my",(e.clientY-r.top)+"px")}));
 }
